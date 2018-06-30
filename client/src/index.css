@@ -7,3 +7,38 @@ body {
 .results-wrap {
     display: flex;
 }
+
+.business-detail-wrap {
+    flex: 3;
+}
+
+.catalogs-content {
+    display: flex;
+}
+
+.list-view-wrap {
+    flex: 1;
+    padding: 20px;
+    overflow: scroll;
+}
+
+.catalog-detail-wrap {
+    flex: 3;
+}
+
+.modal-wrap {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    width: 30%;
+}
+
+.fixed {
+    display: fixed;
+}
+
+.hide {
+    display: none;
+}

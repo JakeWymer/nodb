@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Search from './Search';
 import Results from './Results';
+import Header from './Header';
+import Catalogs from './Catalogs';
 
 class App extends Component {
   constructor() {
@@ -28,6 +30,8 @@ class App extends Component {
     switch(this.state.page) {
       case('results'):
         return <Results businesses={this.state.businesses}/>
+      case('catalogs'):
+        return <Catalogs />
       default: 
         return <Search 
                 changePage={this.changePage}
@@ -38,6 +42,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Header changePage={this.changePage}/>
         {this.renderPage()}
       </div>
     );

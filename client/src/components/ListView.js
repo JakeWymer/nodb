@@ -1,5 +1,6 @@
 import React from 'react';
 import ResultsListItem from './ResultsListItem';
+import CatalogListItem from './CatalogListItem';
 
 function ListView(props) {
   let data = props.data.map((e, i) => {
@@ -11,7 +12,11 @@ function ListView(props) {
           setSelectedBusiness={props.setSelectedBusiness}/>
       );
     }
-    //RETURN CATALOG LIST ITEM
+    return <CatalogListItem
+            catalog={e}
+            key={i}
+            selectCatalog={props.selectCatalog}
+            deleteCatalog={props.deleteCatalog}/>
   });
 
   return(

@@ -20,7 +20,6 @@ class Results extends Component {
   render() {
     return(
       <div className="results-wrap">
-        <h2>RESULTS PAGE</h2>
         <ListView 
           data={this.props.businesses}
           type="business"
