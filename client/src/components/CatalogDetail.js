@@ -17,6 +17,7 @@ class CatalogDetail extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSendClick = this.handleSendClick.bind(this);
     this.sendText = this.sendText.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   handleChange(e) {
@@ -24,7 +25,9 @@ class CatalogDetail extends Component {
   }
 
   handleClick() {
-    this.setState({editing: true, userInput: this.props.selectedCatalog.name});
+    if(this.props.selectedCatalog) {
+      this.setState({editing: true, userInput: this.props.selectedCatalog.name});
+    }
   }
 
   handleSubmit(e) {
@@ -43,15 +46,24 @@ class CatalogDetail extends Component {
     this.setState({sending: false});
   }
 
+  handleCancel() {
+    this.setState({sending: false});
+  }
+
   render() {
     let businesses = [];
     let headline = 'Select a catalog';
+    let shareDisplayClass = 'hide';
 
     if(this.props.selectedCatalog) {
+      if(this.props.selectedCatalog.businesses.length > 0) {
+        shareDisplayClass = 'show';
+      }
       headline = this.props.selectedCatalog.name;
       businesses = this.props.selectedCatalog.businesses.map((e, i) => {
         return(
           <div key={i} className="catalog-business-wrap">
+            <img src={e.image_url} alt={e.name}/>
             <p>{e.name}</p>
             <i 
               className="fas fa-times"
@@ -76,11 +88,12 @@ class CatalogDetail extends Component {
       <div className="catalog-detail-wrap">
         <TextModal
           sending={this.state.sending}
-          sendText={this.sendText}/>
-        <div>
+          sendText={this.sendText}
+          handleCancel={this.handleCancel}/>
+        <div className="catalog-title">
           <h1 onClick={this.handleClick}>{headline}</h1>
           <i 
-            className="fas fa-share-square"
+            className={`fas fa-share-square ${shareDisplayClass}`}
             onClick={this.handleSendClick}></i>
         </div>
         {businesses}

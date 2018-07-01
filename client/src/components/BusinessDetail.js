@@ -45,7 +45,11 @@ class BusinessDetail extends Component {
   async fetchReviews() {
     let reviews = await axios.get(`/api/reviews/${this.props.selectedBusiness.id}`);
     let revs = reviews.data.reviews.map((e, i) => {
-      return <p key={i}>{e.text}</p>
+      return(
+        <div className="review-item">
+          <p key={i}>{e.text}</p>
+        </div>
+      );
     });
 
     this.setState({reviews: revs});
@@ -61,16 +65,31 @@ class BusinessDetail extends Component {
       return <option value={e.id} key={i}>{e.name}</option>
     });
 
+    if(this.props.selectedBusiness.name) {
+      return(
+        <div className="business-detail-wrap">
+          <div className="business-content">
+            <img src={this.props.selectedBusiness.image_url} alt=""/>
+            <p>{this.props.selectedBusiness.name}</p>
+          </div>
+          <div className="reviews-wrap">
+            {this.state.reviews}
+          </div>
+          <form onSubmit={this.handleSubmit}>
+            <select onChange={this.handleSelect}>
+              {cats}
+            </select>
+            <button>Add to Catalog</button>
+          </form>
+        </div>
+      );
+    }
+
     return(
       <div className="business-detail-wrap">
-        <p>{this.props.selectedBusiness.name}</p>
-        {this.state.reviews}
-        <form onSubmit={this.handleSubmit}>
-          <select onChange={this.handleSelect}>
-            {cats}
-          </select>
-          <button>Add to Catalog</button>
-        </form>
+        <div className="business-content">
+          <h2>Select a business</h2>
+        </div>
       </div>
     );
   }    

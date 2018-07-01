@@ -20,11 +20,12 @@ class Results extends Component {
   render() {
     return(
       <div className="results-wrap">
-        <ListView 
-          data={this.props.businesses}
-          type="business"
-          setSelectedBusiness={this.setSelectedBusiness}/>
-        
+        <div className="left-panel">
+          <ListView 
+            data={this.props.businesses}
+            type="business"
+            setSelectedBusiness={this.setSelectedBusiness}/>
+        </div>      
         <BusinessDetail 
           selectedBusiness={this.state.selectedBusiness}/>
       </div>

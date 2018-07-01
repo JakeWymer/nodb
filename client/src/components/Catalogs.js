@@ -60,20 +60,21 @@ class Catalogs extends Component {
   render() {
     return(
       <div className="catalogs-wrap">
-        <form onSubmit={this.addCatalog}>
-          <label htmlFor="catalog-name">Catalog Name</label>
-          <input 
-            onChange={this.handleInput} 
-            value={this.state.userInput}
-            name="catalog-name"/>
-          <button>Add Catalog</button>
-        </form>
         <div className="catalogs-content">
-          <ListView
-            type="catalog"
-            data={this.state.catalogs}
-            selectCatalog={this.selectCatalog}
-            deleteCatalog={this.deleteCatalog}/>
+          <div className="left-panel">
+            <form onSubmit={this.addCatalog}>
+              <input 
+                onChange={this.handleInput} 
+                value={this.state.userInput}
+                name="catalog-name"/>
+              <button>Add Catalog</button>
+            </form>
+            <ListView
+              type="catalog"
+              data={this.state.catalogs}
+              selectCatalog={this.selectCatalog}
+              deleteCatalog={this.deleteCatalog}/>
+          </div>
           <CatalogDetail
             selectedCatalog={this.state.selectedCatalog}
             editCatalogName={this.editCatalogName}

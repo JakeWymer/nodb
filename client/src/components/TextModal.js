@@ -26,9 +26,16 @@ class TextModal extends Component {
 
     return(
       <div className={`modal-wrap ${displayClass}`}>
+        <h2>Share Catalog</h2>
         <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange}/>
+          <input 
+            onChange={this.handleChange}
+            placeholder="Phone Number"/>
+          <button>Send Text</button>
         </form>
+        <button
+          onClick={this.props.handleCancel}
+          className="cancel-btn">Cancel</button>
       </div>
     );
   }
