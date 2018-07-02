@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import swal from 'sweetalert';
 import ListView from './ListView';
 import CatalogDetail from './CatalogDetail';
 
@@ -28,8 +29,12 @@ class Catalogs extends Component {
 
   async addCatalog(e) {
     e.preventDefault();
-    let res = await axios.post('/api/catalogs', {name: this.state.userInput, businesses: []});
-    this.setState({catalogs: res.data, userInput: ''});
+    if(this.state.userInput.length > 0) {
+      let res = await axios.post('/api/catalogs', {name: this.state.userInput, businesses: []});
+      this.setState({catalogs: res.data, userInput: ''});
+    } else {
+      swal('Error', `You must input a catalog name`, 'error');
+    }
   }
 
   handleInput(e) {
