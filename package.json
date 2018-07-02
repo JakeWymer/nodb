@@ -25,6 +25,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "querystring": "^0.2.0",
+    "sweetalert": "^2.1.0",
     "twilio": "^3.17.4"
   },
   "devDependencies": {

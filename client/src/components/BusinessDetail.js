@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 class BusinessDetail extends Component {
   constructor() {
@@ -57,6 +58,7 @@ class BusinessDetail extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    swal('Success!', `${this.props.selectedBusiness.name} added to catalog`, 'success');
     axios.put(`/api/catalogs/${this.state.catalogSelection}/add`, {business: this.props.selectedBusiness});
   }
 
