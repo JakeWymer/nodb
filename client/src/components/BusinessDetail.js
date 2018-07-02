@@ -47,8 +47,8 @@ class BusinessDetail extends Component {
     let reviews = await axios.get(`/api/reviews/${this.props.selectedBusiness.id}`);
     let revs = reviews.data.reviews.map((e, i) => {
       return(
-        <div className="review-item">
-          <p key={i}>{e.text}</p>
+        <div key={i} className="review-item">
+          <p>{e.text}</p>
         </div>
       );
     });
